@@ -1,1 +1,4 @@
 *.~vsdx
+.vs/
+bin/
+obj/
