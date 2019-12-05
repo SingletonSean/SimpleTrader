@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SimpleTrader.EntityFramework.Migrations
@@ -14,7 +15,9 @@ namespace SimpleTrader.EntityFramework.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Email = table.Column<string>(nullable: true),
-                    Username = table.Column<string>(nullable: true)
+                    Username = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true),
+                    DatedJoined = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -51,7 +54,8 @@ namespace SimpleTrader.EntityFramework.Migrations
                     IsPurchase = table.Column<bool>(nullable: false),
                     Stock_Symbol = table.Column<string>(nullable: true),
                     Stock_PricePerShare = table.Column<double>(nullable: false),
-                    Shares = table.Column<int>(nullable: false)
+                    Shares = table.Column<int>(nullable: false),
+                    DateProcessed = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
