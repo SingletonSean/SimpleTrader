@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SimpleTrader.Domain.Models
 {
-    public class Stock
+    public class Asset
     {
         public string Symbol { get; set; }
         public double PricePerShare { get; set; }
