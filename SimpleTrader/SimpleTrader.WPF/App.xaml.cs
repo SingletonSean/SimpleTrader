@@ -1,4 +1,8 @@
-﻿using SimpleTrader.FinancialModelingPrepAPI.Services;
+﻿using SimpleTrader.Domain.Models;
+using SimpleTrader.Domain.Services;
+using SimpleTrader.Domain.Services.TransactionServices;
+using SimpleTrader.EntityFramework.Services;
+using SimpleTrader.FinancialModelingPrepAPI.Services;
 using SimpleTrader.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -17,6 +21,10 @@ namespace SimpleTrader.WPF
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            IDataService<Account> accountService = new AccountDataService(new EntityFramework.SimpleTraderDbContextFactory());
+            IStockPriceService stockPriceService = new StockPriceService();
+            IBuyStockService buyStockService = new BuyStockService(stockPriceService, accountService);
+
             Window window = new MainWindow();
             window.DataContext = new MainViewModel();
             window.Show();
