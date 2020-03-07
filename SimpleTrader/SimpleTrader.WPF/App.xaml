@@ -19,6 +19,10 @@
             <DataTemplate DataType="{x:Type viewmodels:PortfolioViewModel}">
                 <views:PortfolioView/>
             </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:BuyViewModel}">
+                <views:BuyView/>
+            </DataTemplate>
         </ResourceDictionary>
          
     </Application.Resources>
