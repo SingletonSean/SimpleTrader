@@ -23,6 +23,11 @@ namespace SimpleTrader.Domain.Services.AuthenticationServices
         {
             Account storedAccount = await _accountService.GetByUsername(username);
 
+            if(storedAccount == null)
+            {
+                throw new UserNotFoundException(username);
+            }
+
             PasswordVerificationResult passwordResult = _passwordHasher.VerifyHashedPassword(storedAccount.AccountHolder.PasswordHash, password);
 
             if(passwordResult != PasswordVerificationResult.Success)
