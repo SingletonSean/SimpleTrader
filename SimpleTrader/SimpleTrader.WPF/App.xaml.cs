@@ -28,8 +28,6 @@ namespace SimpleTrader.WPF
         protected override void OnStartup(StartupEventArgs e)
         {
             IServiceProvider serviceProvider = CreateServiceProvider();
-            IAuthenticationService authentication = serviceProvider.GetRequiredService<IAuthenticationService>();
-            authentication.Login("SingletonSean", "Test123");
 
             Window window = serviceProvider.GetRequiredService<MainWindow>();
             window.Show();
