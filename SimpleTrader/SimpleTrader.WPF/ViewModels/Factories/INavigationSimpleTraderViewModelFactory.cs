@@ -5,8 +5,8 @@ using System.Text;
 
 namespace SimpleTrader.WPF.ViewModels.Factories
 {
-    public interface IRootSimpleTraderViewModelFactory
+    public interface INavigationSimpleTraderViewModelFactory<T>
     {
-        ViewModelBase CreateViewModel(ViewType viewType, INavigator navigator);
+        T CreateViewModel(INavigator navigator);
     }
 }

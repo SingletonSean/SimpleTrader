@@ -1,5 +1,6 @@
 ﻿using SimpleTrader.Domain.Models;
 using SimpleTrader.Domain.Services.TransactionServices;
+using SimpleTrader.WPF.State.Navigators;
 using SimpleTrader.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,8 @@ namespace SimpleTrader.WPF.Commands
                     Balance = 500,
                     AssetTransactions = new List<AssetTransaction>()
                 }, _buyViewModel.Symbol, _buyViewModel.SharesToBuy);
+
+                _buyViewModel.Navigator.UpdateCurrentViewModelCommand.Execute(ViewType.Home);
 
             }
             catch (Exception e)

@@ -1,6 +1,7 @@
 ﻿using SimpleTrader.Domain.Services;
 using SimpleTrader.Domain.Services.TransactionServices;
 using SimpleTrader.WPF.Commands;
+using SimpleTrader.WPF.State.Navigators;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,6 +11,8 @@ namespace SimpleTrader.WPF.ViewModels
 {
     public class BuyViewModel : ViewModelBase
     {
+		public INavigator Navigator { get; set; }
+
 		private string _symbol;
 		public string Symbol
 		{
@@ -79,10 +82,11 @@ namespace SimpleTrader.WPF.ViewModels
 		public ICommand SearchSymbolCommand { get; set; }
 		public ICommand BuyStockCommand { get; set; }
 
-		public BuyViewModel(IStockPriceService stockPriceService, IBuyStockService buyStockService)
+		public BuyViewModel(IStockPriceService stockPriceService, IBuyStockService buyStockService, INavigator navigator)
 		{
 			SearchSymbolCommand = new SearchSymbolCommand(this, stockPriceService);
 			BuyStockCommand = new BuyStockCommand(this, buyStockService);
+			Navigator = navigator;
 		}
 	}
 }

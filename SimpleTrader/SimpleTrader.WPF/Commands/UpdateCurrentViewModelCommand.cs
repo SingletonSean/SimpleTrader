@@ -33,7 +33,7 @@ namespace SimpleTrader.WPF.Commands
             {
                 ViewType viewType = (ViewType)parameter;
 
-                _navigator.CurrentViewModel = _viewModelFactory.CreateViewModel(viewType);
+                _navigator.CurrentViewModel = _viewModelFactory.CreateViewModel(viewType, _navigator);
             }
         }
     }
