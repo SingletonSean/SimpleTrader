@@ -13,7 +13,7 @@ namespace SimpleTrader.WPF.ViewModels
         {
             Navigator = navigator;
 
-            Navigator.UpdateCurrentViewModelCommand.Execute(ViewType.Home);
+            Navigator.UpdateCurrentViewModelCommand.Execute(ViewType.Login);
         }
     }
 }
