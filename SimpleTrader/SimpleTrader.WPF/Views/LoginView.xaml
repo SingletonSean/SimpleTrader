@@ -5,26 +5,62 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SimpleTrader.WPF.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-        </Grid.ColumnDefinitions>
+             d:DesignHeight="450" d:DesignWidth="800"
+             
+             FontSize="24">
+    <UserControl.Background>
+        <ImageBrush ImageSource="/Resources/login-background.jpg" Stretch="UniformToFill" Opacity="0.5"/>
+    </UserControl.Background>
+    <Border Margin="25" Padding="50" HorizontalAlignment="Center" VerticalAlignment="Center"
+            Background="White"
+            BorderBrush="{StaticResource BrushPrimary2}" BorderThickness="3" CornerRadius="10">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="10" Color="Gray"/>
+        </Border.Effect>
+        <Grid Grid.IsSharedSizeScope="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="Username"/>
-        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Grid.Row="0" FontSize="48" HorizontalAlignment="Center" Text="Simple Trader"/>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="Password"/>
-        <PasswordBox x:Name="pbPassword" Grid.Row="1" Grid.Column="1"/>
+            <TextBlock Grid.Row="1" Margin="0 10" FontSize="18" FontWeight="Thin" HorizontalAlignment="Center" 
+                       Text="The world's simplest stock trading application."/>
 
-        <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center"
-                Content="Login"
-                Click="Login_Click"/>
-    </Grid>
+            <Grid Grid.Row="2" Margin="0 20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Margin="0 10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition SharedSizeGroup="Label" Width="auto"/>
+                        <ColumnDefinition Width="300"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Text="Username"/>
+                    <TextBox Grid.Column="1" Margin="20 0 0 0" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
+                </Grid>
+
+                <Grid Grid.Row="1" Margin="0 10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition SharedSizeGroup="Label" Width="auto"/>
+                        <ColumnDefinition Width="300"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Text="Password"/>
+                    <PasswordBox x:Name="pbPassword" Grid.Column="1" Margin="20 0 0 0"/>
+                </Grid>
+
+                <Button Grid.Row="2" Grid.Column="2" Margin="0 10" HorizontalAlignment="Center"
+                        IsDefault="True"
+                        Content="Login"
+                        Click="Login_Click"/>
+            </Grid>
+        </Grid>
+    </Border>
 </UserControl>
