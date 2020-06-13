@@ -10,7 +10,7 @@ namespace SimpleTrader.WPF.ViewModels
 {
     public class LoginViewModel : ViewModelBase
     {
-		private string _username;
+		private string _username = "SingletonSean";
 		public string Username
 		{
 			get
