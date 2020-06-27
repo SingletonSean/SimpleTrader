@@ -1,6 +1,7 @@
 ﻿using SimpleTrader.Domain.Services;
 using SimpleTrader.Domain.Services.TransactionServices;
 using SimpleTrader.WPF.Commands;
+using SimpleTrader.WPF.State.Accounts;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -79,10 +80,10 @@ namespace SimpleTrader.WPF.ViewModels
 		public ICommand SearchSymbolCommand { get; set; }
 		public ICommand BuyStockCommand { get; set; }
 
-		public BuyViewModel(IStockPriceService stockPriceService, IBuyStockService buyStockService)
+		public BuyViewModel(IStockPriceService stockPriceService, IBuyStockService buyStockService, IAccountStore accountStore)
 		{
 			SearchSymbolCommand = new SearchSymbolCommand(this, stockPriceService);
-			BuyStockCommand = new BuyStockCommand(this, buyStockService);
+			BuyStockCommand = new BuyStockCommand(this, buyStockService, accountStore);
 		}
 	}
 }

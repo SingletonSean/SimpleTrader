@@ -1,5 +1,6 @@
 ﻿using SimpleTrader.Domain.Models;
 using SimpleTrader.Domain.Services.TransactionServices;
+using SimpleTrader.WPF.State.Accounts;
 using SimpleTrader.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -13,13 +14,15 @@ namespace SimpleTrader.WPF.Commands
     {
         public event EventHandler CanExecuteChanged;
 
-        private BuyViewModel _buyViewModel;
-        private IBuyStockService _buyStockService;
+        private readonly BuyViewModel _buyViewModel;
+        private readonly IBuyStockService _buyStockService;
+        private readonly IAccountStore _accountStore;
 
-        public BuyStockCommand(BuyViewModel buyViewModel, IBuyStockService buyStockService)
+        public BuyStockCommand(BuyViewModel buyViewModel, IBuyStockService buyStockService, IAccountStore accountStore)
         {
             _buyViewModel = buyViewModel;
             _buyStockService = buyStockService;
+            _accountStore = accountStore;
         }
 
         public bool CanExecute(object parameter)
@@ -31,13 +34,9 @@ namespace SimpleTrader.WPF.Commands
         {
             try
             {
-                Account account = await _buyStockService.BuyStock(new Account()
-                {
-                    Id = 3,
-                    Balance = 500,
-                    AssetTransactions = new List<AssetTransaction>()
-                }, _buyViewModel.Symbol, _buyViewModel.SharesToBuy);
+                Account account = await _buyStockService.BuyStock(_accountStore.CurrentAccount, _buyViewModel.Symbol, _buyViewModel.SharesToBuy);
 
+                _accountStore.CurrentAccount = account;
             }
             catch (Exception e)
             {
