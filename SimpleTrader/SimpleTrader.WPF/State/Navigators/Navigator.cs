@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Text;
 using System.Windows.Input;
 using SimpleTrader.WPF.Commands;
-using SimpleTrader.WPF.Models;
 using SimpleTrader.WPF.ViewModels;
 using SimpleTrader.WPF.ViewModels.Factories;
 
