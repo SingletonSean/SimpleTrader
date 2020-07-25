@@ -54,15 +54,10 @@
                 </ListView.View>
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="ListViewItem">
-                                    <Grid Margin="0 10">
-                                        <GridViewRowPresenter TextBlock.Foreground="Black" Content="{TemplateBinding Content}"/>
-                                    </Grid>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
+                        <Setter Property="Focusable" Value="False"/>
+                        <Setter Property="IsHitTestVisible" Value="False"/>
+                        <Setter Property="Margin" Value="0 10"/>
+                        <Setter Property="Foreground" Value="Black"/>
                     </Style>
                 </ListView.ItemContainerStyle>
             </ListView>
