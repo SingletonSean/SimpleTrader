@@ -25,7 +25,11 @@
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewmodels:LoginViewModel}">
-                <views:LoginView LoginCommand="{Binding LoginCommand}"/>
+                <views:LoginView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:RegisterViewModel}">
+                <views:RegisterView/>
             </DataTemplate>
         </ResourceDictionary>
          

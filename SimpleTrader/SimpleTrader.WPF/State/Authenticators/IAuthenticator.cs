@@ -15,6 +15,15 @@ namespace SimpleTrader.WPF.State.Authenticators
 
         event Action StateChanged;
 
+        /// <summary>
+        /// Register a new user.
+        /// </summary>
+        /// <param name="email">The user's email.</param>
+        /// <param name="username">The user's name.</param>
+        /// <param name="password">The user's password.</param>
+        /// <param name="confirmPassword">The user's confirmed password.</param>
+        /// <returns>The result of the registration.</returns>
+        /// <exception cref="Exception">Thrown if the registration fails.</exception>
         Task<RegistrationResult> Register(string email, string username, string password, string confirmPassword);
 
         /// <summary>
