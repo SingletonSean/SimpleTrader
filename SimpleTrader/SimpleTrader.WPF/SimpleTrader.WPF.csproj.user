@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Controls\AssetListing.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\AssetSummary.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -36,6 +39,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Controls\AssetListing.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Controls\AssetSummary.xaml">
       <SubType>Designer</SubType>
     </Page>
