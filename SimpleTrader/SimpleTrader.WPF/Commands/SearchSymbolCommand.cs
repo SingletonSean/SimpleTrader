@@ -12,10 +12,10 @@ namespace SimpleTrader.WPF.Commands
 {
     public class SearchSymbolCommand : AsyncCommandBase
     {
-        private readonly BuyViewModel _viewModel;
+        private readonly ISearchSymbolViewModel _viewModel;
         private readonly IStockPriceService _stockPriceService;
 
-        public SearchSymbolCommand(BuyViewModel viewModel, IStockPriceService stockPriceService)
+        public SearchSymbolCommand(ISearchSymbolViewModel viewModel, IStockPriceService stockPriceService)
         {
             _viewModel = viewModel;
             _stockPriceService = stockPriceService;

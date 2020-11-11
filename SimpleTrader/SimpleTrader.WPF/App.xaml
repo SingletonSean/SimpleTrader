@@ -1,27 +1,32 @@
-﻿<Application x:Class="SimpleTrader.WPF.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:viewmodels="clr-namespace:SimpleTrader.WPF.ViewModels"
-             xmlns:views="clr-namespace:SimpleTrader.WPF.Views"
-             xmlns:local="clr-namespace:SimpleTrader.WPF">
+﻿<Application
+    x:Class="SimpleTrader.WPF.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:SimpleTrader.WPF"
+    xmlns:viewmodels="clr-namespace:SimpleTrader.WPF.ViewModels"
+    xmlns:views="clr-namespace:SimpleTrader.WPF.Views">
     <Application.Resources>
 
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Styles/Common.xaml"/>
-                <ResourceDictionary Source="/Styles/NavigationBar.xaml"/>
+                <ResourceDictionary Source="/Styles/Common.xaml" />
+                <ResourceDictionary Source="/Styles/NavigationBar.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
-                <views:HomeView/>
+                <views:HomeView />
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewmodels:PortfolioViewModel}">
-                <views:PortfolioView/>
+                <views:PortfolioView />
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewmodels:BuyViewModel}">
-                <views:BuyView/>
+                <views:BuyView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:SellViewModel}">
+                <views:SellView SelectedAssetChangedCommand="{Binding SearchSymbolCommand}" />
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewmodels:LoginViewModel}">
@@ -29,9 +34,9 @@
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewmodels:RegisterViewModel}">
-                <views:RegisterView/>
+                <views:RegisterView />
             </DataTemplate>
         </ResourceDictionary>
-         
+
     </Application.Resources>
 </Application>

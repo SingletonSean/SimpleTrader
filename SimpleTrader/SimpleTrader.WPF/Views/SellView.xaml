@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="SimpleTrader.WPF.Views.BuyView"
+    x:Class="SimpleTrader.WPF.Views.SellView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:SimpleTrader.WPF.Controls"
@@ -20,12 +20,24 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <WrapPanel Grid.Row="0" HorizontalAlignment="Center">
-            <TextBox Width="100" Text="{Binding Symbol, UpdateSourceTrigger=PropertyChanged}" />
-            <Button Margin="5 0 0 0"
-                Command="{Binding SearchSymbolCommand}"
-                Content="Search" />
-        </WrapPanel>
+        <ComboBox Grid.Row="0"
+            x:Name="cbAssets"
+            Width="300"
+            ItemsSource="{Binding AssetListingViewModel.Assets}"
+            SelectedItem="{Binding SelectedAsset}"
+            SelectionChanged="cbAssets_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Symbol}" />
+                        <Border Margin="10 0"
+                            BorderBrush="Black"
+                            BorderThickness="1 0 0 0" />
+                        <TextBlock Text="{Binding Shares}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
         <TextBlock Grid.Row="1" Margin="0 10 0 0"
             HorizontalAlignment="Center"
@@ -44,8 +56,8 @@
         <controls:SearchSymbolResultPanel Grid.Row="3" Margin="0 20 0 0">
             <StackPanel HorizontalAlignment="Center">
                 <WrapPanel Margin="0 10">
-                    <TextBlock Width="150" Text="Shares to buy:" />
-                    <TextBox Width="50" Text="{Binding SharesToBuy, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Width="150" Text="Shares to sell:" />
+                    <TextBox Width="50" Text="{Binding SharesToSell, UpdateSourceTrigger=PropertyChanged}" />
                 </WrapPanel>
                 <WrapPanel Margin="0 10">
                     <TextBlock Width="150" Text="Price per share:" />
@@ -56,8 +68,8 @@
                     FontSize="32"
                     Text="{Binding TotalPrice, StringFormat={}{0:C}}" />
                 <Button Margin="0 10" Padding="20 5"
-                    Command="{Binding BuyStockCommand}"
-                    Content="Buy"
+                    Command="{Binding SellStockCommand}"
+                    Content="Sell"
                     FontSize="24" />
             </StackPanel>
         </controls:SearchSymbolResultPanel>
