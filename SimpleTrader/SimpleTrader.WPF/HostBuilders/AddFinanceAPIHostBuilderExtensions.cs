@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SimpleTrader.FinancialModelingPrepAPI;
+using SimpleTrader.FinancialModelingPrepAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,7 +16,12 @@ namespace SimpleTrader.WPF.HostBuilders
             host.ConfigureServices((context, services) =>
             {
                 string apiKey = context.Configuration.GetValue<string>("FINANCE_API_KEY");
-                services.AddSingleton<FinancialModelingPrepHttpClientFactory>(new FinancialModelingPrepHttpClientFactory(apiKey));
+                services.AddSingleton(new FinancialModelingPrepAPIKey(apiKey));
+
+                services.AddHttpClient<FinancialModelingPrepHttpClient>(c =>
+                {
+                    c.BaseAddress = new Uri("https://financialmodelingprep.com/api/v3/");
+                });
             });
 
             return host;
