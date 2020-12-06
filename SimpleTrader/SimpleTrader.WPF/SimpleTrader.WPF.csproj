@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
@@ -11,13 +11,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.7">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.7" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.10" />
-    <PackageReference Include="PasswordBoxMVVM" Version="1.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
+    <PackageReference Include="PasswordBoxMVVM" Version="1.0.5" />
   </ItemGroup>
 
   <ItemGroup>
