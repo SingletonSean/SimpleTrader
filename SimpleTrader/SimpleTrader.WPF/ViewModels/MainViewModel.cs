@@ -42,5 +42,13 @@ namespace SimpleTrader.WPF.ViewModels
         {
             OnPropertyChanged(nameof(CurrentViewModel));
         }
+
+        public override void Dispose()
+        {
+            _navigator.StateChanged -= Navigator_StateChanged;
+            _authenticator.StateChanged -= Authenticator_StateChanged;
+
+            base.Dispose();
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SimpleTrader.Domain.Services;
+using SimpleTrader.WPF.State.Assets;
 using SimpleTrader.WPF.State.Authenticators;
 using SimpleTrader.WPF.State.Navigators;
 using SimpleTrader.WPF.ViewModels;
@@ -17,12 +18,12 @@ namespace SimpleTrader.WPF.HostBuilders
         {
             host.ConfigureServices(services =>
             {
-                services.AddSingleton(CreateHomeViewModel);
-                services.AddSingleton<PortfolioViewModel>();
-                services.AddSingleton<BuyViewModel>();
-                services.AddSingleton<SellViewModel>();
-                services.AddSingleton<AssetSummaryViewModel>();
-                services.AddSingleton<MainViewModel>();
+                services.AddTransient(CreateHomeViewModel);
+                services.AddTransient<PortfolioViewModel>();
+                services.AddTransient<BuyViewModel>();
+                services.AddTransient<SellViewModel>();
+                services.AddTransient<AssetSummaryViewModel>();
+                services.AddTransient<MainViewModel>();
 
                 services.AddSingleton<CreateViewModel<HomeViewModel>>(services => () => services.GetRequiredService<HomeViewModel>());
                 services.AddSingleton<CreateViewModel<PortfolioViewModel>>(services => () => services.GetRequiredService<PortfolioViewModel>());
