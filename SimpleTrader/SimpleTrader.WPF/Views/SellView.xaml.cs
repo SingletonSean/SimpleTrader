@@ -37,7 +37,10 @@ namespace SimpleTrader.WPF.Views
         {
             if(cbAssets.SelectedItem != null)
             {
-                SelectedAssetChangedCommand?.Execute(null);
+                if(SelectedAssetChangedCommand.CanExecute(null))
+                {
+                    SelectedAssetChangedCommand?.Execute(null);
+                }
             }
         }
     }
