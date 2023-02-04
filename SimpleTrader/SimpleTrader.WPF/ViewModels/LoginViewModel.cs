@@ -1,4 +1,4 @@
-﻿using SimpleTrader.WPF.Commands;
+using SimpleTrader.WPF.Commands;
 using SimpleTrader.WPF.State.Authenticators;
 using SimpleTrader.WPF.State.Navigators;
 using System;
@@ -21,7 +21,7 @@ namespace SimpleTrader.WPF.ViewModels
 			{
 				_username = value;
 				OnPropertyChanged(nameof(Username));
-                OnPropertyChanged(nameof(CanLogin));
+				OnPropertyChanged(nameof(CanLogin));
 			}
 		}
 
