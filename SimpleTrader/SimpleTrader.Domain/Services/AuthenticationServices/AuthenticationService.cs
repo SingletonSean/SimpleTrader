@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using SimpleTrader.Domain.Exceptions;
 using SimpleTrader.Domain.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SimpleTrader.Domain.Services.AuthenticationServices
@@ -11,9 +9,9 @@ namespace SimpleTrader.Domain.Services.AuthenticationServices
     public class AuthenticationService : IAuthenticationService
     {
         private readonly IAccountService _accountService;
-        private readonly IPasswordHasher _passwordHasher;
+        private readonly IPasswordHasher<string> _passwordHasher;
 
-        public AuthenticationService(IAccountService accountService, IPasswordHasher passwordHasher)
+        public AuthenticationService(IAccountService accountService, IPasswordHasher<string> passwordHasher)
         {
             _accountService = accountService;
             _passwordHasher = passwordHasher;
@@ -28,7 +26,7 @@ namespace SimpleTrader.Domain.Services.AuthenticationServices
                 throw new UserNotFoundException(username);
             }
 
-            PasswordVerificationResult passwordResult = _passwordHasher.VerifyHashedPassword(storedAccount.AccountHolder.PasswordHash, password);
+            var passwordResult = _passwordHasher.VerifyHashedPassword(username, storedAccount.AccountHolder.PasswordHash, password);
 
             if(passwordResult != PasswordVerificationResult.Success)
             {
@@ -61,7 +59,7 @@ namespace SimpleTrader.Domain.Services.AuthenticationServices
 
             if(result == RegistrationResult.Success)
             {
-                string hashedPassword = _passwordHasher.HashPassword(password);
+                string hashedPassword = _passwordHasher.HashPassword(username, password);
 
                 User user = new User()
                 {

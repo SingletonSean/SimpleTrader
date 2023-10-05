@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SimpleTrader.Domain.Models;
@@ -7,9 +7,6 @@ using SimpleTrader.Domain.Services.AuthenticationServices;
 using SimpleTrader.Domain.Services.TransactionServices;
 using SimpleTrader.EntityFramework.Services;
 using SimpleTrader.FinancialModelingPrepAPI.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SimpleTrader.WPF.HostBuilders
 {
@@ -19,8 +16,7 @@ namespace SimpleTrader.WPF.HostBuilders
         {
             host.ConfigureServices(services =>
             {
-                services.AddSingleton<IPasswordHasher, PasswordHasher>();
-
+                services.AddSingleton<IPasswordHasher<string>, PasswordHasher<string>>();
                 services.AddSingleton<IAuthenticationService, AuthenticationService>();
                 services.AddSingleton<IDataService<Account>, AccountDataService>();
                 services.AddSingleton<IAccountService, AccountDataService>();
